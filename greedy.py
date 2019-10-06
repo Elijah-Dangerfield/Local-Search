@@ -24,7 +24,9 @@ def main():
     print(str(local_max).lstrip('[').rstrip(']'), "{:.8f}".format(search_space.Eval(local_max)))
 
 
-def search(search_space, old_point, change, itterations):
+def search(search_space,
+           old_point, change,
+           itterations):
 
     while change > tolerance and itterations < max_iteration:
         print(str(old_point).lstrip('[').rstrip(']'), "{:.8f}".format(search_space.Eval(old_point)))
