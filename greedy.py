@@ -19,7 +19,7 @@ def main():
     num_dim = int(sys.argv[2])
     num_gaus = int(sys.argv[3])
     search_space = SumofGaussians(num_dim, num_gaus)
-    start = np.random.ranf(num_dim)
+    start = 10 * np.random.ranf(num_dim)
     local_max = search(search_space, start, 1, 0)
     print(str(local_max).lstrip('[').rstrip(']'), "{:.8f}".format(search_space.Eval(local_max)))
 

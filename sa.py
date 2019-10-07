@@ -4,6 +4,8 @@ from SumofGaussians import SumofGaussians
 from math import e
 import random
 
+np.set_printoptions(formatter={'float': lambda x: "{0:0.8f}".format(x)})
+
 if len(sys.argv) != 4:
     print()
     print("Usage: %s [seed] [number of dimensions] [number of gausians]" % (sys.argv[0]))
@@ -12,7 +14,7 @@ if len(sys.argv) != 4:
 
 max_iteration = 100000
 T = 1.0
-t_min = 1e-5
+t_min = 1e-8
 cooling_rate = 0.99
 
 
@@ -21,36 +23,34 @@ def main():
     num_dim = int(sys.argv[2])
     num_gaus = int(sys.argv[3])
     search_space = SumofGaussians(num_dim, num_gaus)
-    start = np.random.ranf(num_dim)
-    (found_max, it) = search(search_space, start, T, cooling_rate)
-    print("starting at point: ", start, " = ", search_space.Eval(start))
-    print("ending at point: ", found_max, " = ", search_space.Eval(found_max))
-    print("ended with ", it, " iterations")
+    start = 10 * np.random.ranf(num_dim)
+    found_max = search(search_space, start, T, cooling_rate, num_dim)
 
 
-
-def search(search_space, current_point, T, cooling_rate):
-
+def search(search_space, current_point, T, cooling_rate, num_dim):
     iterations = 0
 
     while iterations < max_iteration and T > t_min:
 
-        iterations +=1
-        new_point = current_point + np.random.uniform(-0.01, 0.01)
+        print(str(current_point).lstrip('[').rstrip(']'), "{:.8f}".format(search_space.Eval(current_point)))
+
+        iterations += 1
+        new_point = current_point + np.random.uniform(-0.01, 0.01, num_dim)
         current_energy = search_space.Eval(current_point)
         new_energy = search_space.Eval(new_point)
 
         if new_energy > current_energy:
             current_point = new_point  # accept the value
         else:
-            print(T)
             p = e ** ((new_energy - current_energy) / T)
             if p > random.uniform(0, 1):
                 current_point = new_point  # accept the value
 
         T *= cooling_rate
 
-    return (current_point, iterations)
+    print(str(current_point).lstrip('[').rstrip(']'), "{:.8f}".format(search_space.Eval(current_point)))
+
+    return current_point
 
 
 if __name__ == '__main__':
