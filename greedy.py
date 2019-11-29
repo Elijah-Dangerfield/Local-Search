@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys
 from SumofGaussians import SumofGaussians
 import numpy as np
@@ -25,7 +27,8 @@ def main():
 
 
 def search(search_space,
-           old_point, change,
+           old_point,
+           change,
            itterations):
 
     while change > tolerance and itterations < max_iteration:

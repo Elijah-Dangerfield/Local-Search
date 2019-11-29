@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for D in 1 2 3 5; do
+        for N in 10 50 100 1000; do
+                for i in {1..100}; do
+                        python greedy.py $i $D $N > "greedy_newer/run_${D}_${N}_${i}.txt"
+                        python sa.py $i $D $N > "sa_newer/run_${D}_${N}_${i}.txt"
+                done;
+        done;
+done;
