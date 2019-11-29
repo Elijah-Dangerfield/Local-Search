@@ -5,8 +5,8 @@ performance in different methods of local search for problem solving.
 
 Both algorithms tested were tasked to search for maxima in a randomly generated space using the Sum of Gaussians function both with the same random starting point. 
 Each algorithm was tested with every combination of  
-N = {10 , 50 , 100, 1000 }   
-D = { 1, 2, 3, 5}   
+```N = {10 , 50 , 100, 1000 }```  
+```D = { 1, 2, 3, 5}```   
 where N is the number of Gaussians (hills) and D is the dimension, for 100 runs each with a different random seed for a total of 3200 runs (1600 each).
 
 
