@@ -12,12 +12,12 @@ where N is the number of Gaussians (hills) and D is the dimension, for 100 runs 
 
 ## The two search methods: 
 
-## Greedy Hill Climbing
+### Greedy Hill Climbing
 found in greedy.py
 
 This method of search uses a simple gradient ascent method to finding a maxima. 
 
-## Simulated Annealing 
+### Simulated Annealing 
 found in sa.py
 
 This method uses simulated annealing with a starting tempurature of 10,000 and a cooling tempurature of .99
