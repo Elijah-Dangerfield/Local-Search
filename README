@@ -1,41 +1,30 @@
-FILES:
+# Local Search
 
-data-1.in
----------
-Standard input for sog_test (1D problem)
+This project is an excercise from CSCI 4350: Introduciton to Artificial Intelligence. The goal of this project is to explore the 
+performance in different methods of local search for problem solving. 
 
-data-1.out
-----------
-Standard output from sog_test
-For example: ./sog_test.py 1 1 10 < data-1.in > data-1.out
+both algorithms tested were tasked to search for maxima in a randomly generated space using the Sum of Gaussians function both with the same random starting point. 
+Each algorithm was tested with every combination of
+N = {10 , 50 , 100, 1000 }   
+D = { 1, 2, 3, 5}   
+where N is the number of Gaussians (hills) and D is the dimension, for 100 runs each with a different random seed for a total of 3200 runs (1600 each).
 
-data-2.in
----------
-Standard input for sog_test.py (2D problem)
 
-data-1.out
-----------
-Standard output from sog_test
-For example: ./sog_test.py 1 2 10 < data-2.in > data-2.out
+## The two search methods: 
 
---> The four files above generate a complete sampling
---> of the requested function(s) for plotting.
+## Greedy Hill Climbing
+found in greedy.py
 
-greedy-1.out
-------------
-Standard output from greedy (1D problem)
-For example: ./greedy.py 1 1 10 > greedy-1.out
+This method of search uses a simple gradient ascent method to finding a maxima. 
 
-greedy-2.out
-------------
-Standard output from greedy (2D problem)
-For example: ./greedy.py 1 2 10 > greedy-2.out
+## Simulated Annealing 
+found in sa.py
 
---> The two above files are corresponding runs
---> of the greedy algorithm on the two functions
---> created using the SoG class.
+This method uses simulated annealing with a starting tempurature of 10,000 and a cooling tempurature of .99
 
-Plots.ipynb
-----------------
-Notebook for plotting the 1D and 2D data.
+# Results
+The statistics and exact result can be round in ```report.pdf```
+The results show that simulated annealing generally outperformed greedy hill climbing in lower dimensions 
+and with a lower number of gaussians. However, greedy hill climbing performed better than simulated annealing
+with a higher number of gaussians
 
